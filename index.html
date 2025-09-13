@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Call Dashboard</title>
+
+    <!--
+        Step 1: Link the Tailwind CSS library.
+        This script tag is all we need to get access to thousands of pre-built utility classes
+        that will make styling our page super easy. We'll use these classes directly in our HTML tags.
+    -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- We'll also add a nice, modern font for a clean look. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom styling to set the font and make the body look good. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 min-h-screen flex items-center justify-center p-4">
+
+    <!--
+        Step 2: Create the main container for the dashboard.
+        This is a "card" that holds all of our components. We're using Tailwind classes to style it:
+        - `bg-white` makes the background white.
+        - `p-8` adds padding all around.
+        - `rounded-2xl` gives it nice, rounded corners.
+        - `shadow-2xl` adds a soft, professional-looking shadow.
+        - `w-full max-w-lg` makes sure the card is responsive and doesn't get too wide on large screens.
+    -->
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-lg">
+
+        <!-- A clean heading for our dashboard -->
+        <h1 class="text-4xl font-bold text-center text-slate-900 mb-6">AI Call Dashboard</h1>
+
+        <!--
+            Step 3: Add the input fields.
+            We'll use a `<div>` to group our inputs and then add two `<input>` tags.
+            - `id` attributes are important! We'll use these later in JavaScript to get the user's input.
+            - `placeholder` provides a hint to the user about what to type.
+            - The Tailwind classes make the fields look good: `w-full` for full width, `p-3` for padding,
+              `border` for a border, and `rounded-lg` for rounded corners.
+        -->
+        <div class="space-y-4 mb-6">
+            <div>
+                <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                <input type="tel" id="phoneNumber" placeholder="e.g., +15551234567" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label for="technicianId" class="block text-sm font-medium text-gray-700 mb-1">Technician ID</label>
+                <input type="text" id="technicianId" placeholder="e.g., TECH-99" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
+
+        <!--
+            Step 4: Add the Call and Hang Up buttons.
+            We group them in a `<div>` with `flex` to place them side-by-side.
+            - `id` attributes are used here too, so we can listen for clicks in JavaScript.
+            - Tailwind classes add color, rounded corners, and a nice animation when you hover over them.
+        -->
+        <div class="flex space-x-4 mb-6">
+            <button id="callButton" class="flex-1 bg-green-600 text-white font-semibold py-3 rounded-lg shadow-lg hover:bg-green-700 transition duration-300">
+                Call
+            </button>
+            <button id="hangUpButton" class="flex-1 bg-red-600 text-white font-semibold py-3 rounded-lg shadow-lg hover:bg-red-700 transition duration-300">
+                Hang Up
+            </button>
+        </div>
+
+        <!--
+            Step 5: Add the container for the conversation transcript.
+            This `<div>` will display the real-time conversation.
+            - `id="transcriptContainer"` is how we will access this element later to insert text.
+            - `border`, `bg-gray-50`, `rounded-lg` give it a clear, separated look.
+            - `h-64` sets a fixed height.
+            - `overflow-y-auto` adds a scroll bar if the text gets too long.
+        -->
+        <div>
+            <h2 class="text-xl font-semibold text-slate-900 mb-2">Conversation Transcript</h2>
+            <div id="transcriptContainer" class="border border-gray-300 bg-gray-50 rounded-lg p-4 h-64 overflow-y-auto text-sm text-gray-800 leading-relaxed">
+                <!-- Transcript will appear here in real-time -->
+                <p class="text-gray-400">Waiting for a call to begin...</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
